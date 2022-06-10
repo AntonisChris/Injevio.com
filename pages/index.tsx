@@ -97,10 +97,10 @@ const Home = () => {
                     muted
                     loop
                     className="col-span-12 md:col-span-6"
-                    style={{
-                        '-webkit-mask-image':
-                            'radial-gradient(circle, black 55%, transparent 100%);',
-                    }}
+                    // style={{    
+                    //     '-webkit-mask-image':
+                    //         'radial-gradient(circle, black 55%, transparent 100%);',
+                    // }}
                 />
             </main>
             <footer className="bg-opacity-[0.12] bg-black w-screen h-12 mt-24 flex justify-center px-6">
