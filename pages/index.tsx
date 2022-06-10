@@ -101,7 +101,7 @@ const Home = () => {
                     // }}
                 />
             </main>
-            <footer className="bg-opacity-[0.12] bg-black w-screen h-12 mt-24 flex justify-center px-6">
+            <footer className="bg-opacity-[0.12] bg-black w-screen h-12 mt-24 flex justify-center px-6 ">
                 <div className="flex items-center justify-between max-w-screen-lg w-full">
                     <div>
                         <FooterButton onClick={() => setisPPModalOpen(true)}>
