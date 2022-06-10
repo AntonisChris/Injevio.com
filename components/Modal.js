@@ -4,7 +4,7 @@ import closeIcon from '../assets/close_FILL0_wght400_GRAD0_opsz48.svg';
 
 export default function Modal({ children, title, onClose }) {
     return (
-        <div className="flex items-center justify-center absolute bg-opacity-50 z-10 bg-black w-screen h-screen">
+        <div className="flex items-center justify-center absolute bg-opacity-50 z-10 bg-black w-screen h-screen bottom-0">
             <div className="bg-white  z-20 h-1/2 w-[100%] mx-6 sm:w-[640px] rounded-3xl ">
                 <div className="p-6 text-black relative h-full flex flex-col">
                     <div className="h-10 mb-4 flex items-center">

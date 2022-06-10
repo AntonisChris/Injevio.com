@@ -14,7 +14,7 @@ const Home = () => {
     const [isCUModalOpen, setisCUModalOpen] = useState(false);
 
     return (
-        <div className="flex flex-col items-center justify-between min-h-screen text-white bg-primary">
+        <div className="flex flex-col relative items-center justify-between min-h-screen text-white bg-primary">
             {isPPModalOpen && (
                 <Modal
                     onClose={() => setisPPModalOpen(false)}
@@ -52,15 +52,13 @@ const Home = () => {
                 <title>Injevio</title>
                 <link rel="icon" href="/logo-fav.png" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link
-                    rel="preconnect"
-                    href="https://fonts.gstatic.com"
-                />
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,500;0,600;1,500;1,600&display=swap"
                     rel="stylesheet"
                 />
             </Head>
+
             <main className="grid grid-cols-12 grid-rows-[128px_1fr] gap-4 items-center w-full flex-1 max-w-screen-lg px-6 ">
                 <div className="col-start-1 col-span-12">
                     <Image src={logo} height={32} width={114} />
@@ -96,8 +94,8 @@ const Home = () => {
                     autoPlay
                     muted
                     loop
-                    className="col-span-12 md:col-span-6"
-                    // style={{    
+                    className="col-span-12 md:col-span-6 "
+                    // style={{
                     //     '-webkit-mask-image':
                     //         'radial-gradient(circle, black 55%, transparent 100%);',
                     // }}
