@@ -1,86 +1,126 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import { useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import Modal from '../components/Modal';
+import FooterButton from '../components/FooterButton';
+import logo from '../assets/logo.svg';
+import android from '../assets/play-store-badge.svg';
+import ios from '../assets/app-store-badge.svg';
 
-const Home: NextPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+import { ppText } from '../assets/ConstVars';
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+const Home = () => {
+    const [isPPModalOpen, setisPPModalOpen] = useState(false);
+    const [isCUModalOpen, setisCUModalOpen] = useState(false);
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    return (
+        <div className="flex flex-col items-center justify-between min-h-screen text-white bg-primary">
+            {isPPModalOpen && (
+                <Modal
+                    onClose={() => setisPPModalOpen(false)}
+                    title={'Privacy Policy'}
+                >
+                    <div dangerouslySetInnerHTML={{ __html: ppText }} />
+                </Modal>
+            )}
+            {isCUModalOpen && (
+                <Modal
+                    onClose={() => setisCUModalOpen(false)}
+                    title={'Contact Us'}
+                >
+                    <div className="flex flex-col h-full">
+                        <input
+                            className="rounded-lg border-[1px] px-2 my-3 w-full h-12"
+                            placeholder="Email"
+                            type="text"
+                            id="fname"
+                            name="fname"
+                        />
+                        <textarea
+                            className="rounded-lg border-[1px] p-2 my-3 flex-1 w-full resize-none"
+                            placeholder="Message"
+                            id="fname"
+                            name="fname"
+                        />
+                        <button className="self-end mt-3 bg-[#0099ff] hover:bg-[#0086E0] h-10 w-24 rounded-lg text-white font-semibold">
+                            Submit
+                        </button>
+                    </div>
+                </Modal>
+            )}
+            <Head>
+                <title>Injevio</title>
+                <link rel="icon" href="/logo-fav.png" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossorigin
+                />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+                    rel="stylesheet"
+                />
+            </Head>
+            <main className="grid grid-cols-12 grid-rows-[128px_1fr] gap-4 items-center w-full flex-1 max-w-screen-lg px-6 ">
+                <div className="col-start-1 col-span-12">
+                    <Image src={logo} height={32} width={114} />
+                </div>
+                <div className="col-span-12 md:col-span-6">
+                    <h2 className="text-6xl py-3">
+                        <b>
+                            Log your injections for{' '}
+                            <span className="text-[#0099FF]">free</span>
+                        </b>
+                    </h2>
+                    <h3 className="text-m py-3">
+                        Create an account and store all the injection
+                        information from your treatment. The history tab
+                        provides easy access to all of the previous injections
+                        for easy recycling of body points.
+                    </h3>
+                    <div className="pt-9 flex">
+                        <a
+                            href="https://apps.apple.com/gr/app/injevio/id1626890599?l=en"
+                            target={'_blank'}
+                            className="mr-4 "
+                        >
+                            <Image src={ios} />
+                        </a>
+                        <button>
+                            <Image src={android} />
+                        </button>
+                    </div>
+                </div>
+                <video
+                    src={'/video.mp4'}
+                    autoPlay
+                    muted
+                    loop
+                    className="col-span-12 md:col-span-6"
+                    style={{
+                        '-webkit-mask-image':
+                            'radial-gradient(circle, black 55%, transparent 100%);',
+                    }}
+                />
+            </main>
+            <footer className="bg-opacity-[0.12] bg-black w-screen h-12 mt-24 flex justify-center px-6">
+                <div className="flex items-center justify-between max-w-screen-lg w-full">
+                    <div>
+                        <FooterButton onClick={() => setisPPModalOpen(true)}>
+                            Privacy Policy
+                        </FooterButton>
+                        <FooterButton onClick={() => setisCUModalOpen(true)}>
+                            Contact Us
+                        </FooterButton>
+                    </div>
+                    <div className="m-3 text-xs font-medium text-white opacity-50">
+                        <span>© injevio 2022</span>
+                    </div>
+                </div>
+            </footer>
         </div>
-      </main>
+    );
+};
 
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
-  )
-}
-
-export default Home
+export default Home;
