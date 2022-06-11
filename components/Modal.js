@@ -5,9 +5,11 @@ import closeIcon from '../assets/close_FILL0_wght400_GRAD0_opsz48.svg';
 export default function Modal({ children, title, onClose }) {
     useEffect(() => {
         document.body.style.overflow = 'hidden';
+        document.body.style.position = 'relative';
 
         return () => {
             document.body.style.overflow = 'unset';
+            document.body.style.position = 'unset';
         };
     });
 
