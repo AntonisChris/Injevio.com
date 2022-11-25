@@ -114,9 +114,13 @@ const Home = () => {
             >
               <Image src={ios} />
             </a>
-            <button>
+            <a
+              href="https://play.google.com/store/apps/details?id=io.injev&hl=el&gl=US"
+              target={'_blank'}
+              className="mr-4 "
+            >
               <Image src={android} />
-            </button>
+            </a>
           </div>
         </div>
         <video
